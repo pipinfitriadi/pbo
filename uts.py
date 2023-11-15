@@ -3,7 +3,7 @@ class Kendaraan:
         self.max_speed = max_speed
         self.mileage = mileage
 
-        
+
 mobil = Kendaraan(max_speed=200, mileage=15)
 motor = Kendaraan(max_speed=150, mileage=20)
 
