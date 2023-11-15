@@ -11,6 +11,8 @@ jobs:
     name: Cek Jawaban Soal
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Set up Python
         if: steps.cache-python-venv.outputs.cache-hit != 'true'
         uses: actions/setup-python@v4
