@@ -1,0 +1,20 @@
+# Copyright (c) Pipin Fitriadi. All rights reserved.
+# Licensed under the MIT License. See LICENSE in the project root for license information.
+
+name: UTS
+on:
+  pull_request:
+    paths:
+      - uts.py
+jobs:
+  cek:
+    name: Cek Jawaban Soal
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        if: steps.cache-python-venv.outputs.cache-hit != 'true'
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Cek
+        run: python uts.py
