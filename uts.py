@@ -14,7 +14,7 @@ class pesawat:
     def waktu(self):
         print("Waktu keberangkatan pesawaat ini Pukul :", self.WaktuKeberangkatan , "PM")
 
-naikpesawat = pesawat( 167, 11.581, 12)
+naikpesawat = pesawat( "IP123", 11.581, "12.00")
 
 naikpesawat.berangkat()
 naikpesawat.menuju()
