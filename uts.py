@@ -1,5 +1,15 @@
-#!/usr/bin/env python3
+class Buku:
+    def __init__(self, judul, penulis, harga):
+        self.judul = judul
+        self.penulis = penulis
+        self.harga = harga
 
-# Copyright (c) Pipin Fitriadi. All rights reserved.
-# Licensed under the MIT License. See LICENSE in the project root for license
-# information.
+    def informasibuku(self):
+        print("====Informasi Buku====")
+        print("Judul Buku : ", {self.judul})
+        print("Penulis Buku : ", {self.penulis})
+        print("Harga Buku : ", {self.harga})
+
+
+Mybook = Buku("Harry Potter", "J.K. Rowling", 150000)
+Mybook.informasibuku()
