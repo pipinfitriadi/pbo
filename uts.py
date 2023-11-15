@@ -13,12 +13,15 @@ class Lingkaran:
         return 2 * math.pi * self.jari_jari
 
 
-# Contoh penggunaan
-jari_jari_lingkaran = float(input("Masukkan jari-jari lingkaran: "))
-lingkaran = Lingkaran(jari_jari_lingkaran)
+try:
+    jari_jari_lingkaran = 12.35
+    lingkaran = Lingkaran(jari_jari_lingkaran)
 
-luas = lingkaran.hitung_luas()
-keliling = lingkaran.hitung_keliling()
+    luas = lingkaran.hitung_luas()
+    keliling = lingkaran.hitung_keliling()
 
-print(f"Luas lingkaran: {luas:.2f}")
-print(f"Keliling lingkaran: {keliling:.2f}")
+    print(f"Luas lingkaran: {luas:.2f}")
+    print(f"Keliling lingkaran: {keliling:.2f}")
+
+except ValueError:
+    print("Mohon masukkan bilangan yang valid.")
