@@ -16,5 +16,6 @@ class Sepeda:
 
 s = Sepeda(3)
 print(s.get_total_roda())
+
 a = Sepeda(2)
 print(a.get_total_roda())
