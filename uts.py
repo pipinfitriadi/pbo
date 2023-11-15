@@ -12,7 +12,8 @@ class Pesawat:
     def tampil_atribut(self):
         print("Nomor Keberangkatan: ", self.nomor_keberangkatan)
         print("Tujuan: ", self.tujuan)
-        print("Waktu_Keberangkatan: ", self.waktu_keberangkatan) 
+        print("Waktu_Keberangkatan: ", self.waktu_keberangkatan)
+
 
 p1 = Pesawat("PK-123", "Jakarta", "06:00")
 p1.tampil_atribut()
