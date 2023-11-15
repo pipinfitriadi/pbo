@@ -9,12 +9,12 @@ class pesawat:
         print("Nomor Keberangkataan pesawat Ini adalah :", self.NomorKeberangkatan)
 
     def menuju(self):
-        print("Tujuan Pesawat Ini Menuju :", self.Tujuan)
+        print("Tujuan Pesawat Ini Menuju  paris Dengan Jarak:", self.Tujuan , "KM")
 
     def waktu(self):
-        print("Waktu keberangkatan pesawaat ini Pukul :", self.WaktuKeberangkatan)
+        print("Waktu keberangkatan pesawaat ini Pukul :", self.WaktuKeberangkatan , "PM")
 
-naikpesawat = pesawat(1, 2, 3)
+naikpesawat = pesawat( 167, 11.581, 12)
 
 naikpesawat.berangkat()
 naikpesawat.menuju()
