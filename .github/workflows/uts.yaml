@@ -3,7 +3,7 @@
 
 name: UTS
 on:
-  pull_request:
+  pull_request_target:
     paths:
       - uts.py
 jobs:
