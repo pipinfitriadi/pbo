@@ -29,3 +29,6 @@ Materi:
             - [_Polymorphism_ dengan _Inheritance_](konsep_oop_pada_python/polymorphism/dengan_inheritance.py)
         - [_Abstraction_](konsep_oop_pada_python/abstraction.py)
 5. [_Building Blocks_](https://drive.google.com/file/d/14E9r_DTD_mr9jxiWj-sE1eiSi8jt78-i/view)
+6. [UTS](uts.py)
+    > Kerjakan soal sesuai dengan peruntukkan pada [_Issue_ di GitHub](https://github.com/pipinfitriadi/pbo/issues) di masing masing repo, lalu lakukan _pull request_ ke fork repo.
+7. [_Object Oriented Shortcuts_](https://drive.google.com/file/d/149J5S_NapIrMu0-Ca8r7Mqm-NeijTxKs/view)
