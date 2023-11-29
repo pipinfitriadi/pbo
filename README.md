@@ -32,3 +32,4 @@ Materi:
 6. [UTS](uts.py)
     > Kerjakan soal sesuai dengan peruntukkan pada [_Issue_ di GitHub](https://github.com/pipinfitriadi/pbo/issues) di masing masing repo, lalu lakukan _pull request_ ke fork repo.
 7. [_Object Oriented Shortcuts_](https://drive.google.com/file/d/149J5S_NapIrMu0-Ca8r7Mqm-NeijTxKs/view)
+8. [_Inheritance and Polymorphism_](https://drive.google.com/file/d/1MiOI4ZyzWow_HY-_2wxvdC1pwzc5ySGs/view)
