@@ -34,3 +34,7 @@ Materi:
 7. [_Object Oriented Shortcuts_](https://drive.google.com/file/d/149J5S_NapIrMu0-Ca8r7Mqm-NeijTxKs/view)
 8. [_Inheritance and Polymorphism_](https://drive.google.com/file/d/1MiOI4ZyzWow_HY-_2wxvdC1pwzc5ySGs/view)
     - [Dekorator staticmethod dan classmethod](https://jagongoding.com/python/menengah/oop/classmethod/)
+9. [_Python Design Pattern_](https://drive.google.com/file/d/1So0nTMM9QeY0kKSiKL3Y6jkgKJQHB1JC/view)
+    1. [Perbedaan _Design Pattern_ dengan _Architecture Pattern_](https://www.anbidev.com/design-pattern-atau-architecture-pattern/)
+    2. [Ragam _Design Pattern_: _Factory_](https://www.anbidev.com/design-pattern-factory/)
+    3. [Ragam _Design Pattern_: _Singleton_](https://www.anbidev.com/design-pattern-singleton/)
