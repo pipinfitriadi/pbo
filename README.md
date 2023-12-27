@@ -38,3 +38,9 @@ Materi:
     1. [Perbedaan _Design Pattern_ dengan _Architecture Pattern_](https://www.anbidev.com/design-pattern-atau-architecture-pattern/)
     2. [Ragam _Design Pattern_: _Factory_](https://www.anbidev.com/design-pattern-factory/)
     3. [Ragam _Design Pattern_: _Singleton_](https://www.anbidev.com/design-pattern-singleton/)
+10. _Advanced Features_ & _Files and Strings_
+    - [_Advanced Features_](https://drive.google.com/file/d/1Sqq6y0tq0P_JW2-wNQ8dNDSvlfBs_prZ/view)
+    - [_Files and Strings_](https://drive.google.com/file/d/1Sv-nWTDhoUTQQkXw91_y5S4uTfyQ83V3/view)
+11. _Exception and Exception Classes & Object Serialization_
+    - [_Exception and Exception Classes_](https://drive.google.com/file/d/1I3PqXhAaIvk0_yh6c11_4BCaXPUoqQwm/view)
+    - [_Object Serialization_](https://drive.google.com/file/d/1dGi9O729cbxZcTz5xdWiqksjRlUZeX-Q/view)
