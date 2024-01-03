@@ -40,7 +40,11 @@ Materi:
     3. [Ragam _Design Pattern_: _Singleton_](https://www.anbidev.com/design-pattern-singleton/)
 10. _Advanced Features_ & _Files and Strings_
     - [_Advanced Features_](https://drive.google.com/file/d/1Sqq6y0tq0P_JW2-wNQ8dNDSvlfBs_prZ/view)
+        1. [_Core Syntax in our Class Design_](advanced_features/core_syntax_in_our_class_design.py)
+        2. [_Variable Naming: 'Public' and 'Private'_](advanced_features/variable_naming_public_and_private.py)
     - [_Files and Strings_](https://drive.google.com/file/d/1Sv-nWTDhoUTQQkXw91_y5S4uTfyQ83V3/view)
+        - [Belajar Python: Cara Membaca dan Menulis File di Python](https://www.petanikode.com/python-file/)
 11. _Exception and Exception Classes & Object Serialization_
     - [_Exception and Exception Classes_](https://drive.google.com/file/d/1I3PqXhAaIvk0_yh6c11_4BCaXPUoqQwm/view)
     - [_Object Serialization_](https://drive.google.com/file/d/1dGi9O729cbxZcTz5xdWiqksjRlUZeX-Q/view)
+12. [_Python Libraries_](https://drive.google.com/file/d/1wdhtA7vH6dpGVa4nmixuBXuYpXK8YgrW/view?usp=sharing)
