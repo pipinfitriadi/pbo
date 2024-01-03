@@ -1,5 +1,21 @@
-#!/usr/bin/env python3
+class Pelajar:
+    def __init__(self, nama):
+        self.nama = nama
+        self.kelas = []
 
-# Copyright (c) Pipin Fitriadi. All rights reserved.
-# Licensed under the MIT License. See LICENSE in the project root for license
-# information.
+    def tampilkan_kelas(self):
+        print(f"Pelajar {self.nama} sedang mengikuti kelas:")
+        for kelas in self.kelas:
+            print(f"- {kelas}")
+
+    def tambahkan_kelas(self, kelas):
+        self.kelas.append(kelas)
+
+
+siswa = Pelajar("Feri Ahmad")
+siswa.tambahkan_kelas("Pemograman Berorientasi Objek")
+siswa.tambahkan_kelas("Arsitektur Komputer")
+siswa.tampilkan_kelas()
+# Output: Pelajar Adi sedang mengikuti kelas:
+# - Matematika
+# - Bahasa Indonesia
