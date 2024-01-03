@@ -1,5 +1,24 @@
-#!/usr/bin/env python3
+class rambulalulintas:
+    def __init__(self, warna):
+        self.warna = warna
 
-# Copyright (c) Pipin Fitriadi. All rights reserved.
-# Licensed under the MIT License. See LICENSE in the project root for license
-# information.
+    def tampilkan_inpo(self):
+        print(f"Warna rambu lalu lintas adalah {self.warna}")
+
+    def ubah_warna(self, warna_baru):
+        self.warna = warna_baru
+        print(f"Warna rambu lalu lintas berhasil diubah menjadi {self.warna}")
+
+
+if __name__ == "__main__":
+    rambu = rambulalulintas('Merah')
+
+    rambu.tampilkan_inpo()
+
+    rambu.ubah_warna('Kuning')
+
+    rambu.tampilkan_inpo()
+
+    rambu.ubah_warna('hijau')
+
+    rambu.tampilkan_inpo()
