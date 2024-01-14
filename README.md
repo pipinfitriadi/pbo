@@ -46,5 +46,12 @@ Materi:
         - [Belajar Python: Cara Membaca dan Menulis File di Python](https://www.petanikode.com/python-file/)
 11. _Exception and Exception Classes & Object Serialization_
     - [_Exception and Exception Classes_](https://drive.google.com/file/d/1I3PqXhAaIvk0_yh6c11_4BCaXPUoqQwm/view)
+        - [_Catching Trapping Exception_](exception_and_exception_class/catching_trapping_exception.py)
+        - [_Custom Exception_](exception_and_exception_class/custom_exception.py)
+        - [_Raising Exception_](exception_and_exception_class/raising_exception.py)
     - [_Object Serialization_](https://drive.google.com/file/d/1dGi9O729cbxZcTz5xdWiqksjRlUZeX-Q/view)
+        - [JSON](object_serialization/tes_json.py)
+        - [YAML](object_serialization/script_yaml1.py)
+        - [_Debugging_](https://realpython.com/python-debugging-pdb/)
+        - [_Logging_](https://realpython.com/python-logging/)
 12. [_Python Libraries_](https://drive.google.com/file/d/1wdhtA7vH6dpGVa4nmixuBXuYpXK8YgrW/view?usp=sharing)
