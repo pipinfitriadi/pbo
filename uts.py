@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
+print  ("Nissy")
+print ("MBD")
 
-# Copyright (c) Pipin Fitriadi. All rights reserved.
-# Licensed under the MIT License. See LICENSE in the project root for license
-# information.
