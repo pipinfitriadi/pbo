@@ -10,7 +10,7 @@ def input_alas_dan_tinggi():
     return alas, tinggi
 
 
-def hitung_luas(alas, tinggi):
+def hitung_luas_segitiga(alas, tinggi):
     return 0.5 * alas * tinggi
 
 
@@ -18,8 +18,8 @@ def hitung_luas(alas, tinggi):
 hasil kembaliannya"""
 
 # satu fungsi bisa dipanggil secara independen
-print(hitung_luas(5, 10))
+print(hitung_luas_segitiga(5, 10))
 
 # contoh dengan inputan alas dan tinggi
 alas, tinggi = input_alas_dan_tinggi()
-print(hitung_luas(alas, tinggi))
+print(hitung_luas_segitiga(alas, tinggi))
