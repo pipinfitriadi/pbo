@@ -3,6 +3,7 @@ print ("=====================================")
 
 print ("UTS Pemrograman Berorientasi Objeck")
 print ("UTS Mahesa Safta Lingga s")
+print ("Prodi Manajemen Bisnis Digital ")
 print ("Sistem Pengelolaan Gudang")
 
 print ("====================================")
