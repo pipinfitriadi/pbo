@@ -4,6 +4,7 @@ class investor:
         self.IdInvestor = IdInvestor
         self.nama = nama
         self.saldo = saldo
+# menampilkan info, dari investor yang ditambahkan.
 
     def Tampilkan_info(self):
         print(self.IdInvestor)
@@ -17,6 +18,7 @@ class asset:
         self.Nama_Asset = Nama_Asset
         self.jenis_Asset = Jenis_Asset
         self.nilai = nilai
+# mengubah nilai dengan nilai yang baru.
 
     def ubah_nilai(self, nilai_baru):
         self.nilai = nilai_baru
@@ -24,8 +26,21 @@ class asset:
 
 
 class portofolio:
-    def __init__(self, Id_portofolio, investor, daftar_asset):
+    def __init__(self, Id_portofolio, investor):
         self.Id_portofolio = Id_portofolio
+        self.investor = investor
+        self.daftar_aset = []
+
+    def tambah_aset(self, aset):
+        # disini investor membeli aset, dari saldo mereka.
+        # kalau saldo mereka mencukupi maka, ditambahkan aset pada portofolio
+        # jika tidak tampilkan saldo tidak mencukupi
+        pass
+
+
+class SistemInfestasi:
+    pass
+
 
 investor1 = investor(101, "AsepBiawak", 1000000)
 investor1.Tampilkan_info()
