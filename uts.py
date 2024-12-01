@@ -1,5 +1,4 @@
 #  sistem manajemen portofolio investasi
-# test apakah bisa berubah langsung atau tidak pada UTSnya
 class investor:
     def __init__(self, IdInvestor, nama, saldo):
         self.IdInvestor = IdInvestor
@@ -13,17 +12,20 @@ class investor:
 
 
 class asset:
-    def __init__(self):
-        pass
+    def __init__(self, Id_Asset, Nama_Asset, Jenis_Asset, nilai):
+        self.Id_Asset = Id_Asset
+        self.Nama_Asset = Nama_Asset
+        self.jenis_Asset = Jenis_Asset
+        self.nilai = nilai
+
+    def ubah_nilai(self, nilai_baru):
+        self.nilai = nilai_baru
+        print(f"nilai asset '{self.Nama_Asset}' diubah menjadi {nilai_baru}")
 
 
 class portofolio:
-    investor: str
-
-
-class sistemInvestasi:
-    nama: str
-
+    def __init__(self, Id_portofolio, investor, daftar_asset):
+        self.Id_portofolio = Id_portofolio
 
 investor1 = investor(101, "AsepBiawak", 1000000)
 investor1.Tampilkan_info()
