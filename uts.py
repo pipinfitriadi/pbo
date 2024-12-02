@@ -1,12 +1,15 @@
 class Pengunjung:
     def __init__(self, nama, umur, id_pengunjung):
-        self.__nama = nama  # Enkapsulasi: atribut disembunyikan dengan double underscore
+        self.__nama = nama
         self.__umur = umur
         self.__id_pengunjung = id_pengunjung
 
     def tampilkan_info(self):
-        """Menampilkan informasi pengunjung."""
-        return f"ID: {self.__id_pengunjung}, Nama: {self.__nama}, Umur: {self.__umur}"
+        return f"Nama: {self.__nama}, Umur: {self.__umur}, ID Pengunjung: {self.__id_pengunjung}"
+
+    @property
+    def umur(self):
+        return self.__umur
 
 
 class Wahana:
@@ -16,13 +19,10 @@ class Wahana:
         self.__batas_umur = batas_umur
 
     def cek_batas_umur(self, pengunjung):
-        if pengunjung._Pengunjung__umur >= self.__batas_umur:
-            return True
-        return False
+        return pengunjung.umur >= self.__batas_umur
 
     def tampilkan_info(self):
-        """Menampilkan informasi wahana."""
-        return f"Wahana: {self.__nama_wahana}, Deskripsi: {self.__deskripsi}, Batas Umur: {self.__batas_umur} tahun"
+        return f"Wahana: {self.__nama_wahana}, Deskripsi: {self.__deskripsi}, Batas Umur: {self.__batas_umur}"
 
 
 class Tiket:
@@ -33,10 +33,10 @@ class Tiket:
         self.__tanggal = tanggal
 
     def validasi_tiket(self):
-        """Validasi apakah pengunjung dapat naik wahana."""
-        if self.__wahana.cek_batas_umur(self.__pengunjung):
-            return f"Tiket valid untuk {self.__pengunjung.tampilkan_info()} di {self.__wahana.tampilkan_info()} pada {self.__tanggal}."
-        return f"Tiket tidak valid untuk {self.__pengunjung.tampilkan_info()} karena tidak memenuhi batas umur."
+        return self.__wahana.cek_batas_umur(self.__pengunjung)
+
+    def tampilkan_info(self):
+        return f"Tiket ID: {self.__id_tiket}, Pengunjung: {self.__pengunjung.tampilkan_info()}, Wahana: {self.__wahana.tampilkan_info()}, Tanggal: {self.__tanggal}"
 
 
 class SistemTamanBermain:
@@ -51,62 +51,43 @@ class SistemTamanBermain:
     def tambah_wahana(self, wahana):
         self.__wahana_list.append(wahana)
 
-    def tambah_tiket(self, tiket):
-        if tiket.validasi_tiket().startswith("Tiket valid"):
+    def pesan_tiket(self, id_tiket, pengunjung, wahana, tanggal):
+        if wahana.cek_batas_umur(pengunjung):
+            tiket = Tiket(id_tiket, pengunjung, wahana, tanggal)
             self.__tiket_list.append(tiket)
-            print("Tiket berhasil dipesan.")
+            return tiket
         else:
-            print(tiket.validasi_tiket())
-
-    def tampilkan_pengunjung(self):
-        for pengunjung in self.__pengunjung_list:
-            print(pengunjung.tampilkan_info())
-
-    def tampilkan_wahana(self):
-        for wahana in self.__wahana_list:
-            print(wahana.tampilkan_info())
+            raise ValueError("Pengunjung tidak memenuhi syarat batas umur untuk wahana ini.")
 
     def tampilkan_tiket(self):
         for tiket in self.__tiket_list:
-            print(tiket.validasi_tiket())
+            print(tiket.tampilkan_info())
 
 
 # Contoh penggunaan
 if __name__ == "__main__":
-    # Membuat objek pengunjung
     sistem = SistemTamanBermain()
 
-    pengunjung1 = Pengunjung("Andi", 10, "P001")
-    pengunjung2 = Pengunjung("Budi", 15, "P002")
-
-    # Menampilkan informasi pengunjung
-    print(pengunjung1.tampilkan_info())
-    print(pengunjung2.tampilkan_info())
-
-    # Membuat objek wahana
-    wahana1 = Wahana("Roller Coaster", "Wahana berputar cepat", 12)
-    wahana2 = Wahana("Ferris Wheel", "Wahana berputar tinggi", 10)
-
+    # Menambah pengunjung
+    pengunjung1 = Pengunjung("Alice", 10, "P001")
+    pengunjung2 = Pengunjung("Bob", 15, "P002")
     sistem.tambah_pengunjung(pengunjung1)
     sistem.tambah_pengunjung(pengunjung2)
 
+    # Menambah wahana
+    wahana1 = Wahana("Roller Coaster", "Wahana yang sangat menegangkan", 12)
+    wahana2 = Wahana("Ferris Wheel", "Wahana yang santai dan menyenangkan", 0)
     sistem.tambah_wahana(wahana1)
     sistem.tambah_wahana(wahana2)
 
-    # Menampilkan informasi wahana
-    print(wahana1.tampilkan_info())
-    print(wahana2.tampilkan_info())
+    # Memesan tiket
+    try:
+        tiket1 = sistem.pesan_tiket("T001", pengunjung1, wahana1, "2023-10-01")
+    except ValueError as e:
+        print(e)
 
-    # Membuat objek tiket
-    tiket1 = Tiket("T001", pengunjung1, wahana1, "2023-02-20")
-    tiket2 = Tiket("T002", pengunjung2, wahana1, "2023-02-20")
+    tiket2 = sistem.pesan_tiket("T002", pengunjung2, wahana1, "2023-10-01")
+    tiket3 = sistem.pesan_tiket("T003", pengunjung1, wahana2, "2023-10-01")
 
-    sistem.tambah_tiket(tiket1)
-    sistem.tambah_tiket(tiket2)
-
-    # Validasi tiket
-    print(tiket1.validasi_tiket())
-    print(tiket2.validasi_tiket())
-    sistem.tampilkan_pengunjung()
-    sistem.tampilkan_wahana()
+    # Menampilkan tiket
     sistem.tampilkan_tiket()
