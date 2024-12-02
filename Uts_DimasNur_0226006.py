@@ -1,6 +1,6 @@
 from datetime import datetime
 
- print("RESERVASI HOTEL @Dimas_club")
+print("RESERVASI HOTEL @Dimas_club")
 
 # Kelas Dasar Person
 class Person:
@@ -134,14 +134,18 @@ hotel = SistemHotel()
 # Menambah kamar
 kamar1 = Kamar(101, "Standar", 500000)
 kamar2 = Kamar(102, "Deluxe", 800000)
+kamar3 = Kamar(103, "Suite",1000000)
 hotel.tambah_kamar(kamar1)
 hotel.tambah_kamar(kamar2)
+hotel.tambah_kamar(kamar3)
 
 # Menambah tamu
 tamu1 = Tamu("Dimas alexander", "08123456789", 1)
 tamu2 = Tamu("Ratna Komalla", "08234567890", 2)
+tamu3 = Tamu("Cahyo", "0853429490", 3)
 hotel.tambah_tamu(tamu1)
 hotel.tambah_tamu(tamu2)
+hotel.tambah_tamu(tamu3)
 
 # Menampilkan kamar yang tersedia
 hotel.tampilkan_kamar_tersedia()
