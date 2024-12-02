@@ -1,3 +1,6 @@
+from datetime import date
+
+# Kelas Pengunjung
 class Pengunjung:
     def __init__(self, nama, umur, id_pengunjung):
         self.__nama = nama
@@ -11,7 +14,22 @@ class Pengunjung:
     def umur(self):
         return self.__umur
 
+    @property
+    def nama(self):
+        return self.__nama
 
+    @property
+    def id_pengunjung(self):
+        return self.__id_pengunjung
+
+    @umur.setter
+    def umur(self, umur):
+        if umur < 0:
+            raise ValueError("Umur tidak boleh negatif.")
+        self.__umur = umur
+
+
+# Kelas Wahana
 class Wahana:
     def __init__(self, nama_wahana, deskripsi, batas_umur):
         self.__nama_wahana = nama_wahana
@@ -25,6 +43,7 @@ class Wahana:
         return f"Wahana: {self.__nama_wahana}, Deskripsi: {self.__deskripsi}, Batas Umur: {self.__batas_umur}"
 
 
+# Kelas Tiket
 class Tiket:
     def __init__(self, id_tiket, pengunjung, wahana, tanggal):
         self.__id_tiket = id_tiket
@@ -36,9 +55,13 @@ class Tiket:
         return self.__wahana.cek_batas_umur(self.__pengunjung)
 
     def tampilkan_info(self):
-        return f"Tiket ID: {self.__id_tiket}, Pengunjung: {self.__pengunjung.tampilkan_info()}, Wahana: {self.__wahana.tampilkan_info()}, Tanggal: {self.__tanggal}"
+        return (
+            f"Tiket ID: {self.__id_tiket}, Pengunjung: {self.__pengunjung.nama}, "
+            f"Wahana: {self.__wahana.tampilkan_info()}, Tanggal: {self.__tanggal}"
+        )
 
 
+# Kelas SistemTamanBermain
 class SistemTamanBermain:
     def __init__(self):
         self.__pengunjung_list = []
@@ -51,20 +74,27 @@ class SistemTamanBermain:
     def tambah_wahana(self, wahana):
         self.__wahana_list.append(wahana)
 
-    def pesan_tiket(self, id_tiket, pengunjung, wahana, tanggal):
-        if wahana.cek_batas_umur(pengunjung):
-            tiket = Tiket(id_tiket, pengunjung, wahana, tanggal)
+    def pesan_tiket(self, id_tiket, id_pengunjung, nama_wahana, tanggal):
+        pengunjung = next((p for p in self.__pengunjung_list if p.id_pengunjung == id_pengunjung), None)
+        wahana = next((w for w in self.__wahana_list if w.tampilkan_info().startswith(f"Wahana: {nama_wahana}")), None)
+
+        if not pengunjung or not wahana:
+            return "Pengunjung atau wahana tidak ditemukan."
+
+        tiket = Tiket(id_tiket, pengunjung, wahana, tanggal)
+        if tiket.validasi_tiket():
             self.__tiket_list.append(tiket)
-            return tiket
+            return "Tiket berhasil dipesan."
         else:
-            raise ValueError("Pengunjung tidak memenuhi syarat batas umur untuk wahana ini.")
+            return "Pengunjung tidak memenuhi batas umur untuk wahana ini."
 
     def tampilkan_tiket(self):
-        for tiket in self.__tiket_list:
-            print(tiket.tampilkan_info())
+        if not self.__tiket_list:
+            return "Belum ada tiket yang dipesan."
+        return "\n".join(tiket.tampilkan_info() for tiket in self.__tiket_list)
 
 
-# Contoh penggunaan
+# Contoh Penggunaan
 if __name__ == "__main__":
     sistem = SistemTamanBermain()
 
@@ -81,13 +111,10 @@ if __name__ == "__main__":
     sistem.tambah_wahana(wahana2)
 
     # Memesan tiket
-    try:
-        tiket1 = sistem.pesan_tiket("T001", pengunjung1, wahana1, "2023-10-01")
-    except ValueError as e:
-        print(e)
+    print(sistem.pesan_tiket("T001", "P001", "Ferris Wheel", date.today()))
+    print(sistem.pesan_tiket("T002", "P001", "Roller Coaster", date.today()))
+    print(sistem.pesan_tiket("T003", "P002", "Roller Coaster", date.today()))
 
-    tiket2 = sistem.pesan_tiket("T002", pengunjung2, wahana1, "2023-10-01")
-    tiket3 = sistem.pesan_tiket("T003", pengunjung1, wahana2, "2023-10-01")
-
-    # Menampilkan tiket
-    sistem.tampilkan_tiket()
+    # Menampilkan tiket yang dipesan
+    print("\nDaftar Tiket:")
+    print(sistem.tampilkan_tiket())
