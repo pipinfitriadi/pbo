@@ -6,7 +6,7 @@ class Produk:
         self.__harga = harga
         self.__stok = stok
 
-    # Getter untuk semua atribut
+    
     def get_id_produk(self):
         return self.__id_produk
 
