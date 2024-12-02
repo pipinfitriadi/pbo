@@ -13,13 +13,13 @@ class investor:
 
 
 class aset:
-    def __init__(self, Id_Asset, Nama_Aset, Jenis_Aset, nilai):
-        self.Id_Asset = Id_Asset
+    def __init__(self, Id_Aset, Nama_Aset, Jenis_Aset, nilai):
+        self.Id_Asset = Id_Aset
         self.Nama_Asset = Nama_Aset
         self.jenis_Asset = Jenis_Aset
         self.nilai = nilai
-# mengubah nilai dengan nilai yang baru.
 
+# mengubah nilai dengan nilai yang baru.
     def ubah_nilai(self, nilai_baru):
         self.nilai = nilai_baru
         print(f"nilai asset '{self.Nama_Asset}' diubah menjadi {nilai_baru}")
@@ -36,7 +36,10 @@ class portofolio:
         # kalau saldo mereka mencukupi maka, ditambahkan aset pada portofolio
         # jika tidak tampilkan saldo tidak mencukupi
         if self.investor.saldo >= aset.nilai:
-            
+            investor.saldo - aset.nilai
+            self.daftar_aset.append(aset)
+            print(f"nama aset '{aset.nama_Aset}' telah berhasil ditambahkan")
+            print(f"di akun = '{self.investor}'")
 
 
 class SistemInfestasi:
