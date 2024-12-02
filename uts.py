@@ -1,11 +1,13 @@
 class Pengunjung:
     def __init__(self, nama, umur, id_pengunjung):
-        self.__nama = nama
+        self.__nama = nama  # Enkapsulasi: atribut disembunyikan dengan double underscore
         self.__umur = umur
         self.__id_pengunjung = id_pengunjung
 
     def tampilkan_info(self):
+        """Menampilkan informasi pengunjung."""
         return f"ID: {self.__id_pengunjung}, Nama: {self.__nama}, Umur: {self.__umur}"
+
 
 class Wahana:
     def __init__(self, nama_wahana, deskripsi, batas_umur):
@@ -19,7 +21,9 @@ class Wahana:
         return False
 
     def tampilkan_info(self):
+        """Menampilkan informasi wahana."""
         return f"Wahana: {self.__nama_wahana}, Deskripsi: {self.__deskripsi}, Batas Umur: {self.__batas_umur} tahun"
+
 
 class Tiket:
     def __init__(self, id_tiket, pengunjung, wahana, tanggal):
@@ -29,9 +33,11 @@ class Tiket:
         self.__tanggal = tanggal
 
     def validasi_tiket(self):
+        """Validasi apakah pengunjung dapat naik wahana."""
         if self.__wahana.cek_batas_umur(self.__pengunjung):
-            return f"Tiket valid untuk {self.__pengunjung._Pengunjung__nama} untuk naik {self.__wahana._Wahana__nama_wahana} pada {self.__tanggal}."
-        return f"Tiket tidak valid untuk {self.__pengunjung._Pengunjung__nama} karena tidak memenuhi batas umur untuk naik {self.__wahana._Wahana__nama_wahana}."
+            return f"Tiket valid untuk {self.__pengunjung.tampilkan_info()} di {self.__wahana.tampilkan_info()} pada {self.__tanggal}."
+        return f"Tiket tidak valid untuk {self.__pengunjung.tampilkan_info()} karena tidak memenuhi batas umur."
+
 
 class SistemTamanBermain:
     def __init__(self):
@@ -46,7 +52,7 @@ class SistemTamanBermain:
         self.__wahana_list.append(wahana)
 
     def tambah_tiket(self, tiket):
-        if tiket.validasi_tiket() != "Tiket tidak valid":
+        if tiket.validasi_tiket().startswith("Tiket valid"):
             self.__tiket_list.append(tiket)
             print("Tiket berhasil dipesan.")
         else:
@@ -64,14 +70,21 @@ class SistemTamanBermain:
         for tiket in self.__tiket_list:
             print(tiket.validasi_tiket())
 
+
 # Contoh penggunaan
 if __name__ == "__main__":
+    # Membuat objek pengunjung
     sistem = SistemTamanBermain()
 
     pengunjung1 = Pengunjung("Andi", 10, "P001")
     pengunjung2 = Pengunjung("Budi", 15, "P002")
 
-    wahana1 = Wahana("Roller Coaster", "Wahana berputar", 12)
+    # Menampilkan informasi pengunjung
+    print(pengunjung1.tampilkan_info())
+    print(pengunjung2.tampilkan_info())
+
+    # Membuat objek wahana
+    wahana1 = Wahana("Roller Coaster", "Wahana berputar cepat", 12)
     wahana2 = Wahana("Ferris Wheel", "Wahana berputar tinggi", 10)
 
     sistem.tambah_pengunjung(pengunjung1)
@@ -80,12 +93,20 @@ if __name__ == "__main__":
     sistem.tambah_wahana(wahana1)
     sistem.tambah_wahana(wahana2)
 
+    # Menampilkan informasi wahana
+    print(wahana1.tampilkan_info())
+    print(wahana2.tampilkan_info())
+
+    # Membuat objek tiket
     tiket1 = Tiket("T001", pengunjung1, wahana1, "2023-02-20")
     tiket2 = Tiket("T002", pengunjung2, wahana1, "2023-02-20")
 
     sistem.tambah_tiket(tiket1)
     sistem.tambah_tiket(tiket2)
 
+    # Validasi tiket
+    print(tiket1.validasi_tiket())
+    print(tiket2.validasi_tiket())
     sistem.tampilkan_pengunjung()
     sistem.tampilkan_wahana()
     sistem.tampilkan_tiket()
