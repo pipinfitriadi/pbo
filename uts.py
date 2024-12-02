@@ -12,11 +12,11 @@ class investor:
         print(self.saldo)
 
 
-class asset:
-    def __init__(self, Id_Asset, Nama_Asset, Jenis_Asset, nilai):
+class aset:
+    def __init__(self, Id_Asset, Nama_Aset, Jenis_Aset, nilai):
         self.Id_Asset = Id_Asset
-        self.Nama_Asset = Nama_Asset
-        self.jenis_Asset = Jenis_Asset
+        self.Nama_Asset = Nama_Aset
+        self.jenis_Asset = Jenis_Aset
         self.nilai = nilai
 # mengubah nilai dengan nilai yang baru.
 
@@ -35,7 +35,8 @@ class portofolio:
         # disini investor membeli aset, dari saldo mereka.
         # kalau saldo mereka mencukupi maka, ditambahkan aset pada portofolio
         # jika tidak tampilkan saldo tidak mencukupi
-        pass
+        if self.investor.saldo >= aset.nilai:
+            
 
 
 class SistemInfestasi:
