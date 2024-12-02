@@ -1,4 +1,3 @@
-# Kelas Produk
 class Produk:
     def __init__(self, id_produk, nama, kategori, harga, stok):
         self.__id_produk = id_produk  # Enkapsulasi atribut
