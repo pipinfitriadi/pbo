@@ -1,12 +1,13 @@
+# Kelas Produk
 class Produk:
     def __init__(self, id_produk, nama, kategori, harga, stok):
-        self.__id_produk = id_produk  # Enkapsulasi atribut
+        self.__id_produk = id_produk
         self.__nama = nama
         self.__kategori = kategori
         self.__harga = harga
         self.__stok = stok
 
-    
+    # Getter dan Setter untuk atribut yang dienkapsulasi
     def get_id_produk(self):
         return self.__id_produk
 
@@ -25,13 +26,13 @@ class Produk:
     def set_stok(self, stok):
         self.__stok = stok
 
-    def kurangi_stok(self, jumlah):
-        self.__stok -= jumlah
-
-    # Menampilkan informasi produk
+    # Metode untuk menampilkan informasi produk
     def tampilkan_info(self):
-        return (f"ID: {self.__id_produk}, Nama: {self.__nama}, "
-                f"Kategori: {self.__kategori}, Harga: {self.__harga}, Stok: {self.__stok}")
+        print(f"ID Produk: {self.__id_produk}")
+        print(f"Nama: {self.__nama}")
+        print(f"Kategori: {self.__kategori}")
+        print(f"Harga: {self.__harga}")
+        print(f"Stok: {self.__stok}\n")
 
 
 # Kelas Transaksi
@@ -42,92 +43,111 @@ class Transaksi:
         self.__jumlah = jumlah
         self.__total_harga = self.hitung_total_harga()
 
-    # Menghitung total harga
+    # Metode untuk menghitung total harga berdasarkan jumlah dan harga produk
     def hitung_total_harga(self):
         return self.__produk.get_harga() * self.__jumlah
 
-    # Override metode tampilkan_info() (Polimorfisme)
+    # Getter untuk atribut yang diperlukan
+    def get_id_transaksi(self):
+        return self.__id_transaksi
+
+    def get_produk(self):
+        return self.__produk
+
+    def get_jumlah(self):
+        return self.__jumlah
+
+    def get_total_harga(self):
+        return self.__total_harga
+
+    # Metode untuk menampilkan ringkasan transaksi (polimorfisme)
     def tampilkan_info(self):
-        return (f"ID Transaksi: {self.__id_transaksi}, "
-                f"Produk: {self.__produk.get_nama()}, "
-                f"Jumlah: {self.__jumlah}, Total Harga: {self.__total_harga}")
+        print(f"ID Transaksi: {self.__id_transaksi}")
+        print(f"Produk: {self.__produk.get_nama()}")
+        print(f"Jumlah: {self.__jumlah}")
+        print(f"Total Harga: {self.__total_harga}\n")
 
 
 # Kelas Kasir
 class Kasir:
     def __init__(self):
-        self.produk_list = []
-        self.transaksi_list = []
+        self.__daftar_transaksi = []
 
-    # Menambahkan produk ke daftar produk
-    def tambah_produk(self, produk):
-        self.produk_list.append(produk)
-
-    # Menghapus produk dari daftar produk
-    def hapus_produk(self, produk):
-        if produk in self.produk_list:
-            self.produk_list.remove(produk)
-
-    # Memproses transaksi dan mengurangi stok produk
-    def proses_transaksi(self, transaksi):
-        produk = transaksi._Transaksi__produk
-        if produk.get_stok() >= transaksi._Transaksi__jumlah:
-            produk.kurangi_stok(transaksi._Transaksi__jumlah)
-            self.transaksi_list.append(transaksi)
+    # Metode untuk menambah produk ke dalam transaksi
+    def tambah_produk(self, produk, jumlah):
+        if produk.get_stok() >= jumlah:
+            produk.set_stok(produk.get_stok() - jumlah)
+            id_transaksi = f"TR-{len(self.__daftar_transaksi) + 1}"
+            transaksi = Transaksi(id_transaksi, produk, jumlah)
+            self.__daftar_transaksi.append(transaksi)
             print("Transaksi berhasil diproses.")
         else:
-            print("Stok tidak cukup untuk transaksi ini.")
+            print("Stok tidak mencukupi.")
+
+    # Metode untuk menampilkan semua transaksi
+    def tampilkan_daftar_transaksi(self):
+        if self.__daftar_transaksi:
+            print("\nDaftar Transaksi:")
+            for transaksi in self.__daftar_transaksi:
+                transaksi.tampilkan_info()
+        else:
+            print("Belum ada transaksi.")
 
 
-# Kelas Sistem Inventaris
+# Kelas SistemInventaris
 class SistemInventaris:
     def __init__(self):
-        self.kasir = Kasir()
+        self.__daftar_produk = []
 
-    # Menambahkan produk baru ke inventaris
-    def tambah_produk(self, id_produk, nama, kategori, harga, stok):
+    # Metode untuk menambah produk baru ke dalam inventaris
+    def tambah_produk_baru(self, id_produk, nama, kategori, harga, stok):
         produk = Produk(id_produk, nama, kategori, harga, stok)
-        self.kasir.tambah_produk(produk)
+        self.__daftar_produk.append(produk)
+        print(f"Produk {nama} berhasil ditambahkan ke dalam inventaris.")
 
-    # Menampilkan daftar produk
+    # Metode untuk menampilkan daftar produk
     def tampilkan_daftar_produk(self):
-        if not self.kasir.produk_list:
-            print("Tidak ada produk dalam inventaris.")
+        if self.__daftar_produk:
+            print("\nDaftar Produk:")
+            for produk in self.__daftar_produk:
+                produk.tampilkan_info()
         else:
-            for produk in self.kasir.produk_list:
-                print(produk.tampilkan_info())
+            print("Belum ada produk dalam inventaris.")
 
-    # Menampilkan daftar transaksi
-    def tampilkan_daftar_transaksi(self):
-        if not self.kasir.transaksi_list:
-            print("Tidak ada transaksi yang diproses.")
-        else:
-            for transaksi in self.kasir.transaksi_list:
-                print(transaksi.tampilkan_info())
+    # Metode untuk memproses transaksi
+    def proses_transaksi(self, kasir, id_produk, jumlah):
+        for produk in self.__daftar_produk:
+            if produk.get_id_produk() == id_produk:
+                kasir.tambah_produk(produk, jumlah)
+                return
+        print("Produk tidak ditemukan.")
 
 
-# Contoh Penggunaan
-if __name__ == "__main__":
-    # Membuat sistem inventaris
-    sistem = SistemInventaris()
+# Fungsi utama untuk menguji program
+def main():
+    sistem_inventaris = SistemInventaris()
+    kasir = Kasir()
 
-    # Menambahkan produk
-    sistem.tambah_produk(1, "Laptop", "Elektronik", 15000000, 10)
-    sistem.tambah_produk(2, "Mouse", "Aksesoris", 50000, 50)
+    # Menambahkan beberapa produk ke dalam inventaris
+    sistem_inventaris.tambah_produk_baru("P001", "Buku Tulis", "Alat Tulis", 5000, 20)
+    sistem_inventaris.tambah_produk_baru("P002", "Pulpen", "Alat Tulis", 3000, 50)
+    sistem_inventaris.tambah_produk_baru("P003", "Penghapus", "Alat Tulis", 2000, 30)
 
     # Menampilkan daftar produk
-    print("Daftar Produk:")
-    sistem.tampilkan_daftar_produk()
+    sistem_inventaris.tampilkan_daftar_produk()
 
-    # Membuat transaksi dan memprosesnya
-    produk_laptop = sistem.kasir.produk_list[0]  # Mengambil produk Laptop
-    transaksi1 = Transaksi(1, produk_laptop, 2)
-    sistem.kasir.proses_transaksi(transaksi1)
+    # Memproses beberapa transaksi
+    sistem_inventaris.proses_transaksi(kasir, "P001", 5)
+    sistem_inventaris.proses_transaksi(kasir, "P002", 10)
+    sistem_inventaris.proses_transaksi(kasir, "P003", 40)  # Transaksi gagal karena stok tidak mencukupi
 
     # Menampilkan daftar transaksi
-    print("\nDaftar Transaksi:")
-    sistem.tampilkan_daftar_transaksi()
+    kasir.tampilkan_daftar_transaksi()
 
     # Menampilkan daftar produk setelah transaksi
-    print("\nDaftar Produk setelah transaksi:")
-    sistem.tampilkan_daftar_produk()
+    sistem_inventaris.tampilkan_daftar_produk()
+
+
+# Menjalankan program utama
+if __name__ == "__main__":
+    main()
