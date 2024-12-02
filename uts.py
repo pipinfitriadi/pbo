@@ -37,10 +37,11 @@ class portofolio:
         # kalau saldo mereka mencukupi maka, ditambahkan aset pada portofolio
         # jika tidak tampilkan saldo tidak mencukupi
         if self.investor.saldo >= aset.nilai:
-            investor.saldo -= aset.nilai
+            self.investor.saldo -= aset.nilai
             self.daftar_aset.append(aset)
             print(f"nama aset '{aset.Nama_Aset}' telah berhasil ditambahkan")
-            print(f"di akun = '{self.investor}'")
+            print(f"di akun = '{self.investor.nama}'")
+            # memakai self karena atribut objek dan variabelnya.
         else:
             print("saldo tidak mencukupi untuk membeli aset.")
 
@@ -83,6 +84,6 @@ sistem.menambah_aset(aset1)
 portofolio1 = sistem.kelola_portofolio(1, 1)
 
 if portofolio1:
-    portofolio1.tambah_Nama_Aset(aset1)
+    portofolio1.tambah_aset(aset1)
 # jikaportofolio 1 = portofolio(dibuat), maka ditambahkan tambah_aset
 investor1.Tampilkan_info()
