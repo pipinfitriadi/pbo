@@ -104,3 +104,4 @@ sistem.tampilkan_data_barang()
 #menampilkan data karyawan
 print("\nData Karyawan:")
 sistem.tampilkan_data_karyawan()
+
