@@ -10,7 +10,7 @@ Daftar Materi:
 1. [Pemrograman dan Siklus Hidup Perangkat Lunak](https://docs.google.com/presentation/d/1fx8PkA4meuEdn3F8WtryPoFML9pI_8h1/edit)
 2. [Analisis Masalah Menggunakan Konsep _Object-Oriented Analysis_](https://docs.google.com/presentation/d/1jJDMwl7XtiTRftSygTm58SZmS8ILqFjP/edit)
 3. [Membuat dan Menguji Program](https://docs.google.com/presentation/d/1mypdO97pLIT8iX9YpBYkuxpnYZBKzasD/edit)
-    - [membuat_dan_menguji_program.py](membuat_dan_menguji_program.py)
+    - [Praktek](membuat_dan_menguji_program/)
 4. [Konsep PBO pada Python](https://drive.google.com/file/d/1pm2Sm-Iih5gi8oynQis7MkpMZk8LPcJi/view)
     1. Paradigma Pemrograman:
         - [Prosedural](konsep_oop_pada_python/prosedural.py)
