@@ -3,81 +3,81 @@ class Pasien:
         self.__nama = nama
         self.__nomor_identitas = nomor_identitas
         self.__usia = usia
-    
-    def nama(self):  # Menambahkan property untuk akses nama
-        return self.__nama
-        
-    def tampilkan_info(self):
-        return f"Pasien: {self.__nama}, ID: {self.__nomor_identitas}, Usia: {self.__usia}"
 
+    def tampilkan_info(self):
+        print(f'Nama: {self.__nama}, Nomor Identitas: {self.__nomor_identitas}, Usia: {self.__usia}')
 
 class Dokter:
     def __init__(self, nama, spesialisasi):
-        self.__nama = nama
-        self.__spesialisasi = spesialisasi  # Perbaikan typo
-        self.__jadwal = []
-    
-    def nama(self):  # Menambahkan property untuk akses nama
-        return self.__nama
-        
-    def tambah_jadwal(self, janji_temu):
-        self.__jadwal.append(janji_temu)  # Perbaikan akses ke variabel private
+        self.nama = nama
+        self.spesialisasi = spesialisasi
+        self.jadwal = []
 
+    def tambah_jadwal(self, janji_temu):
+        self.jadwal.append(janji_temu)
 
 class JanjiTemu:
     def __init__(self, id_janji, pasien, dokter, waktu):
-        self.__id_janji = id_janji
-        self.__pasien = pasien
-        self.__dokter = dokter
-        self.__waktu = waktu
-    
-    def dokter(self):
-        return self.__dokter
-        
-    def waktu(self):
-        return self.__waktu
-        
+        self.id_janji = id_janji
+        self.pasien = pasien
+        self.dokter = dokter
+        self.waktu = waktu
+
     def konfirmasi_janji(self):
-        return f"Janji temu dengan {self.__pasien.nama} pada {self.__waktu} telah dikonfirmasi"
+        print(f"Konfirmasi janji temu dengan {self.dokter.nama} pada waktu {self.waktu} berhasil.")
 
-
-class SistemKlinik: 
+class SistemKlinik:
     def __init__(self):
-        self.__pasien_list = []
-        self.__dokter_list = []
-        self.__janji_temu_list = []
-    
+        self.daftar_pasien = []
+        self.daftar_dokter = []
+        self.jadwal_dokter = {}
+
     def tambah_pasien(self, pasien):
-        self.__pasien_list.append(pasien)
-    
+        self.daftar_pasien.append(pasien)
+
     def tambah_dokter(self, dokter):
-        self.__dokter_list.append(dokter)
-    
+        self.daftar_dokter.append(dokter)
+
     def atur_janji_temu(self, janji_temu):
-        for j in self.__janji_temu_list:
-            if j.dokter == janji_temu.dokter and j.waktu == janji_temu.waktu:  # Perbaikan operator perbandingan
-                return "Jadwal dokter sudah terisi. Silahkan pilih waktu lain."
-        self.__janji_temu_list.append(janji_temu)
-        janji_temu.dokter.tambah_jadwal(janji_temu)
-        return "Janji temu berhasil diatur."
+        dokter = janji_temu.dokter
+        dokter_key = dokter.nama  # Menggunakan nama dokter sebagai kunci unik
+        if dokter_key in self.jadwal_dokter:
+            for jadwal in self.jadwal_dokter[dokter_key]:
+                if jadwal.waktu == janji_temu.waktu:
+                    print(f"Janji temu dengan {dokter.nama} pada waktu {janji_temu.waktu} sudah terjadwal.")
+                    return
+        else:
+            self.jadwal_dokter[dokter_key] = []
+        
+        self.jadwal_dokter[dokter_key].append(janji_temu)
+        print(f"Janji temu dengan {dokter.nama} pada waktu {janji_temu.waktu} berhasil diatur.")
+        
+# Contoh penggunaan program untuk sistem manajemen layanan kesehatan
 
-    def tampilkan_daftar_pasien(self):  # Menambahkan method untuk akses daftar
-        return [pasien.tampilkan_info() for pasien in self.__pasien_list]
+# Membuat objek Pasien
+pasien1 = Pasien("Nissy Auliyanti", "P001", 19)
+pasien2 = Pasien("Nadin Amizah", "P002", 24)
 
-    def tampilkan_daftar_dokter(self):  # Menambahkan method untuk akses daftar
-        return [(dokter.nama, dokter.__spesialisasi) for dokter in self.__dokter_list]
+# Menampilkan informasi pasien
+pasien1.tampilkan_info()
+pasien2.tampilkan_info()
 
-# Contoh penggunaan
-sistem_klinik = SistemKlinik()  # Perbaikan nama variabel menggunakan snake_case
+# Membuat objek Dokter
+dokter1 = Dokter("Dr. Glinda", "Dokter Umum")
+dokter2 = Dokter("Dr. Isyana", "Dokter Spesialis")
 
-# Menambahkan pasien
-pasien1 = Pasien("Nissy Auliyanti", "123456", 19)
+# Menambah jadwal janji temu untuk dokter
+janji_temu1 = JanjiTemu("001", pasien1, dokter1, "2024-12-12 09:00")
+janji_temu2 = JanjiTemu("002", pasien2, dokter2, "2024-12-19 09:00")
+
+dokter1.tambah_jadwal(janji_temu1)
+dokter2.tambah_jadwal(janji_temu2)
+
+# Mengatur janji temu dalam sistem klinik
+sistem_klinik = SistemKlinik()
 sistem_klinik.tambah_pasien(pasien1)
-
-# Menambahkan dokter
-dokter1 = Dokter("Dr. Glinda", "Umum")
+sistem_klinik.tambah_pasien(pasien2)
 sistem_klinik.tambah_dokter(dokter1)
-
-# Menampilkan daftar pasien dan dokter
-print(sistem_klinik.tampilkan_daftar_pasien())
-print(sistem_klinik.tampilkan_daftar_dokter())
+sistem_klinik.tambah_dokter(dokter2)
+sistem_klinik.atur_janji_temu(janji_temu1)
+sistem_klinik.atur_janji_temu(janji_temu2)
