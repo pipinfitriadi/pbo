@@ -26,6 +26,7 @@ class Barang(Entity):
             print(f"Stok {self.nama} bertambah {jumlah}. Total stok: {self.__stok}")
         else:
             print("Jumlah yang ditambahkan tidak valid.")
+            # untuk memastikan bahwa jumlah stock yang ditambahkan lebih dari 0 jika lebih dari 0 stok akan ditambahkan dan akan di tampilkan 
 
     # buat menguranggi stock
     def kurangi_stok(self, jumlah):
@@ -33,7 +34,9 @@ class Barang(Entity):
             self.__stok -= jumlah
             print(f"Stok {self.nama} berkurang {jumlah}. Total stok: {self.__stok}")
         else:
-            print("Stok tidak mencukupi atau jumlah yang dikurangi tidak valid.")
+            print("Stok tidak mencukupi.")
+            # memastiskan jika stok mencukupi dan jumlah pengurangan sesuai jika stok tidak mencukupi aakan menampilkan pesan kesalahan stok tidak mencukupi 
+
 
     # Mengambil jumlah stok
     def get_stok(self):
@@ -50,7 +53,7 @@ class Supplier(Entity):
         self.kontak = kontak
         self.daftar_barang = []
 
-    # Method untuk menambah barang yang disuplai
+    # Menambah barang yang disuplai
     def tambah_barang_suplai(self, barang):
         self.daftar_barang.append(barang)
         print(f"Barang {barang.nama} ditambahkan ke daftar suplai {self.nama}.")
@@ -78,6 +81,7 @@ class Transaksi:
             self.barang.kurangi_stok(self.jumlah)
         else:
             print("Tipe transaksi tidak valid.")
+            #menambah atau mengurangi stok sesuai tipe transaksi ada barang masuk dan barang keluar
 
 # Kelas SistemGudang
 class SistemGudang:
@@ -142,6 +146,12 @@ transaksi1.proses_transaksi()
 
 transaksi2 = Transaksi("T002", barang2, 5, "keluar")
 transaksi2.proses_transaksi()
+
+transaksi3 = Transaksi("T003", barang4, 8, "keluar")
+transaksi3.proses_transaksi()
+
+transaksi4 = Transaksi("T004", barang5, 12, "masuk")
+transaksi4.proses_transaksi()
 
 # Menampilkan informasi lagi setelah transaksi
 gudang.tampilkan_info()
