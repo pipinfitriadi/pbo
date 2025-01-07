@@ -1,0 +1,6 @@
+Buat Web App menggunakan Django (CSS dan JS Optional) yang implementasi PBO, SOLID Principle, dan Design Pattern
+
+Menentukan Soal UAS Sendiri:
+- Arya
+- Dimas
+- Mahesa
