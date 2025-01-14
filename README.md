@@ -58,4 +58,5 @@ Daftar Materi:
         - [_Debugging_](https://realpython.com/python-debugging-pdb/)
         - [_Logging_](https://realpython.com/python-logging/)
 13. [_Python Libraries_](https://drive.google.com/file/d/1wdhtA7vH6dpGVa4nmixuBXuYpXK8YgrW/view?usp=sharing)
-14. [UAS](https://drive.google.com/file/d/17uy2_kR7yXJiwAsx95lRWGrgBFb79vI4/view)
+<!--14. [UAS](https://drive.google.com/file/d/17uy2_kR7yXJiwAsx95lRWGrgBFb79vI4/view)-->
+14. [UAS](uas/)
