@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Kampanye</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Daftar Kampanye</h1>
+        <a href="{% url 'create_campaign' %}" class="btn btn-primary">Buat Kampanye Baru</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Judul</th>
+                    <th>Deskripsi</th>
+                    <th>Target Dana</th>
+                    <th>Dana Terkumpul</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for campaign in campaigns %}
+                <tr>
+                    <td>{{ campaign.title }}</td>
+                    <td>{{ campaign.description }}</td>
+                    <td>{{ campaign.target_amount }}</td>
+                    <td>{{ campaign.current_amount }}</td>
+                    <td>
+                        <a href="{% url 'donate' campaign.id %}" class="btn btn-success">Donasi</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
