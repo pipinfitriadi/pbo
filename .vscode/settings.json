@@ -1,3 +1,6 @@
-{
+{INSTALLED_APPS = [
+    ...
+    'inventory',
+]
     "markdownlint.ignore": ["LICENSE"]
 }
