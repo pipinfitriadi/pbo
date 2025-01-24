@@ -1,0 +1,9 @@
+<!-- inventory/templates/inventory/supplier_orders.html -->
+<h1>Pesanan dari Toko</h1>
+<ul>
+    {% for order in orders %}
+        <li>Pesanan untuk {{ order.product.name }} - Jumlah: {{ order.quantity }}
+            <a href="{% url 'update_order_status' order.id %}">Perbarui Status</a>
+        </li>
+    {% endfor %}
+</ul>

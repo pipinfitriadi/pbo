@@ -1,0 +1,10 @@
+<!-- inventory/templates/inventory/product_list.html -->
+<h1>Daftar Produk</h1>
+<a href="{% url 'add_product' %}">Tambah Produk</a>
+<ul>
+    {% for product in products %}
+        <li>{{ product.name }} - {{ product.price }} - Stok: {{ product.stock }}
+            <a href="{% url 'order_product' product.id %}">Pesan</a>
+        </li>
+    {% endfor %}
+</ul>

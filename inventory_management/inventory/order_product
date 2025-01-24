@@ -1,0 +1,42 @@
+# inventory/views.py
+from django.core.mail import send_mail
+from django.conf import settings
+
+def order_product(request, product_id):
+    product = Product.objects.get(id=product_id)
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.product = product
+            order.save()
+
+            # Kirim email setelah pesanan dibuat
+            send_mail(
+                'Pesanan Baru Diterima',
+                f'Pesanan untuk {order.quantity} unit {product.name} telah diterima.',
+                settings.EMAIL_HOST_USER,
+                ['manager_email@example.com'],  # Ganti dengan email manajer
+                fail_silently=False,
+            )
+            return redirect('product_list')
+    else:
+        form = OrderForm()
+    return render(request, 'inventory/order_product.html', {'form': form, 'product': product})
+
+def update_order_status(request, order_id):
+    order = Order.objects.get(id=order_id)
+    if request.method == 'POST':
+        order.status = request.POST.get('status')
+        order.save()
+
+        # Kirim email setelah status pesanan diperbarui
+        send_mail(
+            'Status Pesanan Diperbarui',
+            f'Status pesanan untuk {order.product.name} telah diperbarui menjadi {order.status}.',
+            settings.EMAIL_HOST_USER,
+            ['supplier_email@example.com'],  # Ganti dengan email pemasok
+            fail_silently=False,
+        )
+        return redirect('supplier_orders')
+    return render(request, 'inventory/update_order_status.html', {'order': order})

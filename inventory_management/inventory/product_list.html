@@ -1,0 +1,38 @@
+<!-- inventory/templates/inventory/product_list.html -->
+<h1>Daftar Produk</h1>
+<a href="{% url 'add_product' %}">Tambah Produk</a>
+<ul>
+    {% for product in products %}
+        <li>{{ product.name }} - {{ product.price }} - Stok: {{ product.stock }}
+            <a href="{% url 'order_product' product.id %}">Pesan</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Produk dengan Stok Hampir Habis</h2>
+<ul>
+    {% for product in low_stock_products %}
+        <li>{{ product.name }} - Stok: {{ product.stock }}</li>
+    {% endfor %}
+</ul>
+<!-- inventory/templates/inventory/product_list.html -->
+<h1>Daftar Produk</h1>
+<form method="get">
+    <input type="text" name="q" placeholder="Cari produk...">
+    <button type="submit">Cari</button>
+</form>
+<a href="{% url 'add_product' %}">Tambah Produk</a>
+<ul>
+    {% for product in products %}
+        <li>{{ product.name }} - {{ product.price }} - Stok: {{ product.stock }}
+            <a href="{% url 'order_product' product.id %}">Pesan</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Produk dengan Stok Hampir Habis</h2>
+<ul>
+    {% for product in low_stock_products %}
+        <li>{{ product.name }} - Stok: {{ product.stock }}</li>
+    {% endfor %}
+</ul>

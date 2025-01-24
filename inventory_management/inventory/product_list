@@ -1,0 +1,15 @@
+# inventory/views.py (tambahkan di product_list)
+def product_list(request):
+    products = Product.objects.all()
+    low_stock_products = products.filter(stock__lt=5)  # Misalnya, stok di bawah 5 dianggap hampir habis
+    return render(request, 'inventory/product_list.html', {'products': products, 'low_stock_products': low_stock_products})
+# inventory/views.py
+def product_list(request):
+    products = Product.objects.all()
+    low_stock_products = products.filter(stock__lt=5)
+
+    query = request.GET.get('q')
+    if query:
+        products = products.filter(name__icontains=query)
+
+    return render(request, 'inventory/product_list.html', {'products': products, 'low_stock_products': low_stock_products})
