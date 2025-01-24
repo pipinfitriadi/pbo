@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Product</title>
+</head>
+<body>
+    <h1>Order {{ product.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" min="1" required>
+        <button type="submit">Order</button>
+    </form>
+    <a href="{% url 'product_list' %}">Back to Product List</a>
+</body>
+</html>

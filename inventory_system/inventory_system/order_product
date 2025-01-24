@@ -1,0 +1,6 @@
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('products/', product_list, name='product_list'),
+    path('products/add/', add_product, name='add_product'),
+    path('products/order/<int:product_id>/', order_product, name='order_product'),
+]
