@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Arya App</title>
+</head>
+<body>
+    <h1>Welcome to WebArya</h1>
+    <p>Karya seni visual</p>
+    <ul>
+        {% for Karya in karya %}
+        <li>
+            <strong>Judul:</strong> {{ Karya.Judul_Karya }}<br>
+            <strong>Nama Pembuat:</strong> {{ Karya.Nama_pembuat }}<br>
+            <strong>Deskripsi:</strong> {{ Karya.deskripsi }}<br>
+            <strong>Harga:</strong> Rp. {{ Karya.harga }}<br>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
