@@ -37,6 +37,9 @@ Daftar Materi:
 9. _SOLID Principles_
     - [_SOLID: The First 5 Principles of Object Oriented Design_](https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
     - [_SOLID Principles Explained_](https://www.youtube.com/watch?v=V3TUEeB0kW0)
+    - [Memahami Prinsip SOLID di Python: Sebuah Panduan Lengkap](https://blog.unmaha.ac.id/memahami-prinsip-solid-di-python-sebuah-panduan-lengkap/)
+    - [Penerapan _SOLID Principles_ pada C#](https://juldhais.net/penerapan-solid-principles-pada-c-a4745680a733)
+    - [Belajar Prinsip Pemrograman SOLID](https://medium.com/sysinfo/belajar-prinsip-pemrograman-solid-9a42ff68c66b)
 10. [_Python Design Pattern_](https://drive.google.com/file/d/1So0nTMM9QeY0kKSiKL3Y6jkgKJQHB1JC/view)
     1. [Perbedaan _Design Pattern_ dengan _Architecture Pattern_](https://www.anbidev.com/design-pattern-atau-architecture-pattern/)
     2. [Ragam _Design Pattern_: _Factory_](https://www.anbidev.com/design-pattern-factory/)
