@@ -5,6 +5,6 @@ app_name = 'products'
 
 urlpatterns = [
     path('', views.product_list, name='product_list'),
-    path('<slug:category_slug>/', views.product_list, name='product_list_by_category'),  # Perbaikan: Ditambahkan koma di akhir
-    path('product/<int:id>/<slug:slug>/', views.product_detail, name="product_detail"),  # Perbaikan: Ditambahkan koma di akhir
+    path('<slug:category_slug>/', views.product_list, name='product_list_by_category'),  
+    path('product/<int:id>/<slug:slug>/', views.product_detail, name="product_detail"),
 ]
