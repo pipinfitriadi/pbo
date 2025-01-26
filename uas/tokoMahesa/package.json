@@ -5,13 +5,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch:css": "npx tailwindcss -i ./static/src/styles.css -o ./static/dist/styles.css --watch"
-
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^4.0.0"
   }
 }
