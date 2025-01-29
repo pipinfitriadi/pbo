@@ -30,7 +30,10 @@ class karyaSeni(models.Model):
     Nama_pembuat = models.CharField(max_length=64)
     Category = models.ForeignKey(Category, default=1, on_delete=models.CASCADE)
     deskripsi = models.CharField(max_length=258, default='', blank=True, null=True)
-    harga = models.DecimalField(default=0, max_digits=5, decimal_places=2)
+    harga = models.DecimalField(default=0, max_digits=6, decimal_places=2)
+    # menambahkan penjualan
+    is_sale = models.BooleanField(default=False)
+    sale_price = models.DecimalField(default=0, max_digits=6, decimal_places=2)
 
     def __str__(self):
         return (f"ID: {self.id}: Dari {self.Judul_Karya} Dibuat oleh {self.Nama_pembuat} Deskripsi : {self.deskripsi}, dijual dengan harga Rp.{self.harga}")
