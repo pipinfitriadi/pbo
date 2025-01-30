@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import karyaSeni
+from .models import karyaSeni, Category
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -8,6 +8,23 @@ from .forms import SignUpForm
 from django import forms
 
 # Create your views here.
+
+def category(request, foo):
+    foo = foo.replace('-', ' ')
+    # ngambil category dari url
+    try:
+        # melihat category
+        category = Category.objects.get(name=foo)
+        products = karyaSeni.objects.filter(Category=category)
+        return render(request, 'category.html', {'products': products, 'category':category})
+
+    except:
+        messages.success(request, ("category tersebut tidak ada"))
+        return redirect('home')
+
+def product(request,pk):
+    product = karyaSeni.objects.get(id=pk)
+    return render(request, 'product.html', {'product':product})
 
 def home_view(request):
     products = karyaSeni.objects.all()
