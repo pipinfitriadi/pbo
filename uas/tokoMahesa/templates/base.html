@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>{%block title%}WebToko{%endblock%}</title>
+    <title>{%block title%}Web Toko{%endblock%}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     {% load static %}
     <link href="{% static 'dist/styles.css'%}" rel="stylesheet" />
@@ -11,7 +11,7 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
   </head>
 
-  <body class="bg-gray-100 text-gray-800">
+  <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
 <header class="shadow-md"> 
   {% include "includes/nav.html" %}
 </header>
