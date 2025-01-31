@@ -13,17 +13,20 @@ def cart_add(request):
     cart = Cart(request)
     # test post
     if request.POST.get('action') == 'post':
-        # ambil id karya seni
-        product_id = int(request.POST.get('karyaSeni_id'))
-
+        # ambil  
+        product_id = int(request.POST.get('product_id'))
         # melihat product di database
         product = get_object_or_404(karyaSeni, id=product_id)
        
         # save ke session
-        cart.add(product=product)
+        cart.add(product=product) 
+
+        # ambil cart quantity
+        cart_quantity = cart.__len__()
 
         # return response
-        response = JsonResponse({'Product Name': karyaSeni.Judul_Karya})  # Corrected key
+        # response = JsonResponse({'Product Name: ': product.Judul_Karya})  
+        response = JsonResponse({'qty': cart_quantity})  
         return response
 
 def cart_delete(request):

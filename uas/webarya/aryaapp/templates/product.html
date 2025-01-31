@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-
 <div class="container">
 <br/><br/>
  <div class="card mb-3">
@@ -30,13 +28,14 @@
 
                 {% else %}
                     ${{ product.harga }}
-                    <br/> ID: {{ product.id }}
+                    <br/> 
                 {% endif %}
 
                 </br></br>
                 <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
-                </center>
                 <button type="button" value="{{ product.id }}" class="btn btn-secondary" id="add-cart">add to cart</button>
+
+            </center>
             </div>
         </div>
         </div>
@@ -53,22 +52,22 @@ $(document).on('click', '#add-cart', function(e){
         type: 'POST',
         url: '{% url 'cart_add' %}',
         data: {
-            product_id: $('add-cart').val(),
+            product_id: $('#add-cart').val(),
             csrfmiddlewaretoken: '{{ csrf_token }}',
             action : 'post'
         },
 
-        success : function(json){
-            console.log(json);
+        success: function(json){
+            console.log(json)
+            document.getElementById("cart_quantity").textContent = json.qty
         },
-        error : function(xhr, errmsg, err){
+        
+        error: function(xhr, errmsg, err){
 
         }
 
     });
-
-
 })
 </script>
 
-{% endblock  %}
+{% endblock %}

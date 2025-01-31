@@ -15,10 +15,13 @@ class Cart():
     def add(self, product):
         product_id = str(product.id)
 
-        # logic
+        # Logic to add or update the product in the cart
         if product_id in self.cart:
             pass
         else:
             self.cart[product_id] = {'harga': str(product.harga)}
 
         self.session.modified = True
+
+    def __len__(self):
+        return len(self.cart)

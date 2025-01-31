@@ -12,6 +12,8 @@
                         <li class="nav-item"><a class="nav-link" href=" {% url 'logout' %} ">logout</a></li>
                         {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+
 
                         <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
                         {% endif %}
@@ -32,7 +34,10 @@
                         <a href="{% url 'cart_summary' %}" class="btn btn-outline-dark">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}
+
+
+                            </span>
                         </a>
                         
                     </form>
