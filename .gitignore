@@ -4,3 +4,26 @@
 __pycache__/
 
 .coverage*
+node_modules/
+*.py[cod]
+*.sqlite3
+*.log
+
+# Django
+db.sqlite3
+*.pot
+*.pyc
+/staticfiles/
+*.py~
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Tailwind CSS
+dist/
+src/styles.css
+
+.env

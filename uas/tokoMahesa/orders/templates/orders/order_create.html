@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{%block title%}Konfirmasi pesanan selesai {%endblock%}
+
+
+{% block content %}
+<div> 
+    <div class="shadow-md p-4">
+        <h2 class="text-indigo-600 text-2xl font-semibold mb-4">Checkout</h2>
+
+        <form method="post">
+            {%csrf_token%}
+            {{form.as_p}}
+            <button  class="inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"">Selesai</button>
+        </form>
+    </div>
+    
+    <style>
+        form p{
+           margin-bottom: 1rem;
+        }
+    </style>
+    {%endblock%}
+    

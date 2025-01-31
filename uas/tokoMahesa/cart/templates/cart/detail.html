@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{%block title%}Keranjang Belanja {%endblock%}
+
+
+{%block content%}
+<h2 class="text-2xl font-semibold mb-4"> Keranjang Belanja</h2>
+
+{%if cart %}
+<ul class="space-y-4">
+    {%for item in cart.items.all %}
+    <li class="flex items-center p-4">
+        {%if item.product.image%}
+        <img src="{{item.product.image.url}}" alt={{item.product.name}} class="w-24 mr-4">
+        {%endif%}
+        <div class="flex-grow">
+            <a href="{%url 'products:product_detail' item.product.id item.product.slug%}">
+        <h3 class="font-semibold text-lg">{{item.product.name}}</h3>
+            </a>
+        <p class="text-gray-700">{{item.product.description}}</p>
+        <p class="text-indigo-600">RP {{item.product.price}}</p>
+        <p class="text-gray-600">Jumlah : {{item.quantity}}</p>
+
+<div class="flex-shrink">
+   <form action="{%url 'cart:remove_item' item.id %}"  method="post">
+    {%csrf_token%}
+    <button type="submit" class="bg-red-600 text-white px-4 py-1 text-xs rounded">X</button>
+   </form>
+</div>
+        </div>
+    </li>
+    {%endfor%}
+</ul>
+
+<p><strong>Total Harga: Rp {{cart.get_total_price}}</strong></p>
+{%else%}
+<p>Keranjang Belanja Kosong.</p>
+{% endif %}
+<form action="{% url 'orders:order_create'%}" method="post"> 
+    {% csrf_token %}
+       <button type="submit" class="inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500">Lanjut Checkout </button>
+</form>
+
+{%endblock%}

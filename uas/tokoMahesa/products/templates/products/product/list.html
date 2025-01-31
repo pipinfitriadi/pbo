@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %} Web Toko {% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-4 flex">
+    <aside class="w-1/4 p-4">
+        <h2 class="font-bold">Categories:</h2>
+        <ul>
+            {% for category in categories %}
+            <li>
+                <a href="{% url 'products:product_list_by_category' category.slug %}">{{ category.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </aside>
+
+    <main class="w-3/4 p-4">
+        {% if category %}
+        <h2 class="font-bold mb-4">{{ category.name }}</h2>
+        {% else %}
+        <h2 class="font-bold mb-4">All Product</h2>
+        {% endif %}
+
+        <div class="grid grid-cols-3 gap-4">
+            {% for product in products %}
+            <a href="{% url 'products:product_detail' product.id product.slug %}" class="group relative block overflow-hidden">
+                <button class="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75">
+                </button>
+
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72" />
+
+                <div class="relative border border-gray-100 bg-white p-6">
+                    <p class="text-gray-700">
+                        Rp {{ product.price }}
+                        {% if product.original_price %}
+                        <span class="text-gray-400 line-through">Rp. {{ product.original_price }}</span>
+                        {% endif %}
+                    </p>
+                    <h3 class="mt-1.5 text-lg font-medium text-gray-900">{{ product.name }}</h3>
+                    <p class="mt-1.5 line-clamp-3 text-gray-700">{{ product.description }}</p>
+
+                    <form class="mt-4 flex gap-4">
+                        <button type="button" class="block w-full rounded bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105">Lihat Products</button>
+                    </form>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </main>
+</div>
+{% endblock %}
