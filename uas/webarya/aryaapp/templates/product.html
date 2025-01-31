@@ -30,11 +30,13 @@
 
                 {% else %}
                     ${{ product.harga }}
+                    <br/> ID: {{ product.id }}
                 {% endif %}
 
                 </br></br>
                 <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
                 </center>
+                <button type="button" value="{{ product.id }}" class="btn btn-secondary" id="add-cart">add to cart</button>
             </div>
         </div>
         </div>
@@ -42,5 +44,31 @@
                         
 </div>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<script>
+// cek apakah tombol berfungsi
+$(document).on('click', '#add-cart', function(e){
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: '{% url 'cart_add' %}',
+        data: {
+            product_id: $('add-cart').val(),
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            action : 'post'
+        },
+
+        success : function(json){
+            console.log(json);
+        },
+        error : function(xhr, errmsg, err){
+
+        }
+
+    });
+
+
+})
+</script>
 
 {% endblock  %}
